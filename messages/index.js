@@ -40,8 +40,8 @@ intents
         session.userData.lowerLimit = 1;
         session.userData.upperLimit = 100;
         // Only say the following message if there is no other Intent
-        var msg = 'I can give you a random number between ' + session.userData.lowerLimit.toString() + ' and ' + session.userData.upperLimit.toString()+ '.';
-        session.send(msg);
+        //var msg = 'I can give you a random number between ' + session.userData.lowerLimit.toString() + ' and ' + session.userData.upperLimit.toString()+ '.';
+        //session.send(msg);
         // session.say(msg, msg);
         next();
     });
