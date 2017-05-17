@@ -11,8 +11,8 @@ var botbuilder_azure = require("botbuilder-azure");
 var useEmulator = (process.env.NODE_ENV == 'development');
 
 var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure.BotServiceConnector({
-    appId: process.env['MicrosoftAppId'] || '38aa9481-2b83-4731-8463-6c16e884fff2',
-    appPassword: process.env['MicrosoftAppPassword'] || '9rPejzCVcjfbUtmq41D6jqL',
+    appId: process.env['MicrosoftAppId'],
+    appPassword: process.env['MicrosoftAppPassword'],
     stateEndpoint: process.env['BotStateEndpoint'],
     openIdMetadata: process.env['BotOpenIdMetadata']
 });
@@ -20,9 +20,9 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
 var bot = new builder.UniversalBot(connector);
 
 // Make sure you add code to validate these fields
-var luisAppId = process.env.LuisAppId || 'ea62ddfd-05cf-4265-beea-48b00eb53ae1';
-var luisAPIKey = process.env.LuisAPIKey || '2baef7b876e74990a28b0dcfe19b4708';
-var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
+var luisAppId = process.env['LuisAppId'];
+var luisAPIKey = process.env['LuisAPIKey'];
+var luisAPIHostName = process.env['LuisAPIHostName'] || 'westus.api.cognitive.microsoft.com';
 
 const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisAppId + '?subscription-key=' + luisAPIKey;
 
@@ -39,11 +39,8 @@ intents
     .onBegin(function (session, args, next) {
         session.userData.lowerLimit = 1;
         session.userData.upperLimit = 100;
-        // Only say the following message if there is no other Intent
-        //var msg = 'I can give you a random number between ' + session.userData.lowerLimit.toString() + ' and ' + session.userData.upperLimit.toString()+ '.';
-        //session.send(msg);
-        // session.say(msg, msg);
-        next();
+
+        next(); // call next() to get the bot started
     });
 
 intents.matches('RandomNumber', [

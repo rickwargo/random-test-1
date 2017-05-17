@@ -9,7 +9,11 @@
             "program": "${workspaceRoot}/index.js",
             "cwd": "${workspaceRoot}",
             "env": {
-                "NODE_ENV": "development"
+                "NODE_ENV": "development",
+                "MicrosoftAppId": "38aa9481-2b83-4731-8463-6c16e884fff2",
+                "MicrosoftAppPassword": "9rPejzCVcjfbUtmq41D6jqL",
+                "LuisAppId": "ea62ddfd-05cf-4265-beea-48b00eb53ae1",
+                "LuisAPIKey": "2baef7b876e74990a28b0dcfe19b4708"
             }
         }
     ]
